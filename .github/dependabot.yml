@@ -12,7 +12,6 @@ updates:
       interval: weekly
     open-pull-requests-limit: 5
 
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: weekly
+  # 刻意**不**开启 github-actions 自动更新：
+  # actions/* 的新主版本往往先于其 runner 镜像就绪，自动升级会把 CI 直接打红，
+  # 而这类升级影响面小、手动升一次即可。
