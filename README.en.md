@@ -87,6 +87,22 @@ tauri-plugin-web-dev-bridge = "0.1"
 npm install tauri-plugin-web-dev-bridge
 ```
 
+<details>
+<summary>Install from Git (unreleased versions)</summary>
+
+```bash
+npm i "git+https://github.com/xinggaoya/tauri-plugin-web-dev-bridge.git#v0.1.0"
+```
+
+> ⚠️ **Use `git+https://`, not `github:owner/repo`**.
+> pnpm normalizes `github:` into `git+ssh://git@github.com/...` and records that in the
+> lockfile, so CI (and any anonymous environment) fails with
+> `git@github.com: Permission denied (publickey)`.
+> With `git+https://` pnpm switches to the codeload HTTPS tarball instead, and consumers
+> need no git or SSH setup at all.
+
+</details>
+
 ## Usage
 
 ### 1. Register the plugin and start it from your `setup` hook

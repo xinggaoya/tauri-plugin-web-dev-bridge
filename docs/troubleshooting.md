@@ -117,6 +117,22 @@ curl -N http://127.0.0.1:6222/health
 
 ---
 
+## 安装时 `git@github.com: Permission denied (publickey)`
+
+依赖写成了 `github:owner/repo#ref`，pnpm 会把它归一化成 SSH 地址并写进 lock 文件，
+于是 CI（以及任何没有 SSH key 的环境）拉取失败。
+
+改成 `git+https://` 写法即可 —— pnpm 会转而使用 codeload 的 HTTPS tarball：
+
+```bash
+npm i "git+https://github.com/xinggaoya/tauri-plugin-web-dev-bridge.git#v0.1.0"
+```
+
+改完后需要重新生成 lock 文件（`rm -rf node_modules && pnpm install`），
+确认 lock 里记的是 `https://codeload.github.com/...` 而不是 `git+ssh://...`。
+
+---
+
 ## 还是不行？
 
 请开 issue，并附上：

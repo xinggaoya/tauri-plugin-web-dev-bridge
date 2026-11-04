@@ -84,7 +84,7 @@ tauri-plugin-web-dev-bridge = "0.1"
 ```
 
 <details>
-<summary>从 Git 依赖（想用未发布版本时）</summary>
+<summary>从 Git 依赖（registry 尚未发布时用这个）</summary>
 
 ```toml
 [dependencies]
@@ -100,12 +100,20 @@ npm install tauri-plugin-web-dev-bridge
 # pnpm add tauri-plugin-web-dev-bridge
 ```
 
+> registry 尚未发布时，请用下面的 Git 依赖方式。
+
 <details>
 <summary>从 Git 依赖（想用未发布版本时）</summary>
 
 ```bash
 npm i "git+https://github.com/xinggaoya/tauri-plugin-web-dev-bridge.git#v0.1.0"
 ```
+
+> ⚠️ **请务必写 `git+https://`，不要写 `github:owner/repo`**。
+> pnpm 会把 `github:` 归一化成 `git+ssh://git@github.com/...` 并写进 lock 文件，
+> 于是 CI / 匿名环境会以 `git@github.com: Permission denied (publickey)` 失败。
+> 写成 `git+https://` 时 pnpm 会改用 codeload 的 HTTPS tarball，
+> 消费方无需任何 git 或 SSH 配置。
 
 </details>
 
