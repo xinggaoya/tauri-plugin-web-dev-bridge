@@ -1,0 +1,55 @@
+name: Bug 报告
+description: 报告插件行为与预期不符的问题
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请尽量提供可复现的最小步骤，这能大幅缩短排查时间。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 实际发生了什么？期望发生什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 在 Tauri 应用中注册插件
+        2. 执行 `pnpm tauri dev`
+        3. 在浏览器打开 dev server 地址
+        4. 出现错误
+    validations:
+      required: true
+
+  - type: input
+    id: tauri-version
+    attributes:
+      label: Tauri 版本
+      placeholder: tauri = "2.10"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志
+      description: 应用日志、浏览器控制台输出，或 `curl http://127.0.0.1:6222/health` 的结果
+      render: shell

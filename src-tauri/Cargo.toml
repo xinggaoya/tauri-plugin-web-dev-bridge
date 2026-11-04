@@ -1,0 +1,33 @@
+[package]
+name = "tauri-plugin-web-dev-bridge"
+version = "0.1.0"
+description = "把运行中的 Tauri v2 应用的真实 IPC 暴露给普通浏览器，用于网页调试与浏览器自动化测试。"
+authors = ["XingGao"]
+license = "MIT"
+repository = "https://github.com/xinggaoya/tauri-plugin-web-dev-bridge"
+homepage = "https://github.com/xinggaoya/tauri-plugin-web-dev-bridge"
+documentation = "https://docs.rs/tauri-plugin-web-dev-bridge"
+readme = "README.md"
+keywords = ["tauri", "devtools", "browser", "automation", "debug"]
+categories = ["development-tools::debugging"]
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "tauri_plugin_web_dev_bridge"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+# 本插件以 path 依赖方式被主工程引用，同时保持独立 workspace 根，
+# 便于后续单独发版（crates.io / npm）。
+[workspace]
+
+[dependencies]
+tauri = { version = "2.10", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "sync", "time", "macros"] }
+tracing = "0.1"
+url = "2"
+
+[features]
+default = []

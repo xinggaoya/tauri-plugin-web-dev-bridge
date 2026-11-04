@@ -1,0 +1,5 @@
+# 本插件是一个**独立**的 npm 包，有自己的依赖与锁文件。
+# 声明空 workspace，使其成为独立的 workspace 根——
+# 否则 pnpm 会向上找到主仓库的 pnpm-workspace.yaml，
+# 导致本包无法生成自己的 pnpm-lock.yaml（CI 的 --frozen-lockfile 会失败）。
+packages: []

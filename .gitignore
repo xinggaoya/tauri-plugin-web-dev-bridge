@@ -1,0 +1,13 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# Rust
+src-tauri/target/
+# 库 crate 通常不提交 Cargo.lock（crates.io 官方建议）
+src-tauri/Cargo.lock
+
+# 日志与临时文件
+*.log
+.DS_Store
+Thumbs.db

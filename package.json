@@ -1,0 +1,73 @@
+{
+  "name": "tauri-plugin-web-dev-bridge",
+  "version": "0.1.0",
+  "description": "让普通浏览器直连运行中的 Tauri v2 应用真实后端，用于网页调试与浏览器自动化测试。",
+  "keywords": [
+    "tauri",
+    "tauri-plugin",
+    "devtools",
+    "browser",
+    "automation",
+    "debug",
+    "webview"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "default": "./dist/vite.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "src-tauri/src",
+    "src-tauri/Cargo.toml",
+    "src-tauri/README.md",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xinggaoya/tauri-plugin-web-dev-bridge.git"
+  },
+  "homepage": "https://github.com/xinggaoya/tauri-plugin-web-dev-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/xinggaoya/tauri-plugin-web-dev-bridge/issues"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "pnpm run build",
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write \"**/*.{ts,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,json}\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "jsdom": "^30.1.2",
+    "prettier": "^3.9.6",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.3"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
