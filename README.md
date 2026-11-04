@@ -100,6 +100,20 @@ npm install tauri-plugin-web-dev-bridge
 # pnpm add tauri-plugin-web-dev-bridge
 ```
 
+<details>
+<summary>从 Git 依赖（想用未发布版本时）</summary>
+
+```bash
+npm i "git+https://github.com/xinggaoya/tauri-plugin-web-dev-bridge.git#v0.1.0"
+```
+
+</details>
+
+> **关于产物形态**：npm 包直接提供 **TypeScript 源码**（`main` 指向 `src/index.ts`），
+> 由消费方的打包器（vite / esbuild）编译。这样做的好处是**零构建**——
+> git 依赖不需要执行 `prepare` 脚本，也就不需要任何 `allowBuilds` 白名单。
+> 只需要编译产物（`dist/`）时，可自行执行 `pnpm run build`。
+
 ## 用法
 
 ### 1. 注册插件并在 `setup` 钩子里启动

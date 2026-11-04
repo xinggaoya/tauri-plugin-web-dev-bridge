@@ -13,25 +13,19 @@
   ],
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./vite": {
-      "types": "./dist/vite.d.ts",
-      "default": "./dist/vite.js"
-    }
+    ".": "./src/index.ts",
+    "./vite": "./src/vite.ts"
   },
   "files": [
-    "dist",
     "src",
     "src-tauri/src",
     "src-tauri/Cargo.toml",
     "src-tauri/README.md",
     "README.md",
+    "README.en.md",
     "LICENSE",
     "CHANGELOG.md"
   ],
@@ -45,7 +39,6 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "prepare": "pnpm run build",
     "type-check": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
