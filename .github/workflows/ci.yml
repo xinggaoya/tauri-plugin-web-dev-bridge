@@ -85,3 +85,11 @@ jobs:
 
       - name: 构建产物
         run: pnpm run build
+
+      # dist/ 随仓库提交（让 git 依赖即装即用），因此必须校验它与 src/ 同步。
+      - name: 校验 dist 与源码同步
+        run: |
+          if ! git diff --exit-code -- dist; then
+            echo "::error::dist/ 与 src/ 不同步，请执行 pnpm run build 后提交产物"
+            exit 1
+          fi

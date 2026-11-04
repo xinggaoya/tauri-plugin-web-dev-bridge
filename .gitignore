@@ -1,11 +1,17 @@
-# 依赖与构建产物
+# 依赖
 node_modules/
-dist/
 
 # Rust
 src-tauri/target/
 # 库 crate 通常不提交 Cargo.lock（crates.io 官方建议）
 src-tauri/Cargo.lock
+
+# 注意：dist/ **不**忽略——
+# 编译产物随仓库提交，使 git 依赖「即装即用」：
+#   1. git 依赖不会触发 prepare 脚本（也就不需要消费方的 allowBuilds 白名单）；
+#   2. vite.config.ts 由 Node 直接加载，Node 无法剥离 node_modules 下 TS 的类型，
+#      因此包内必须自带可执行的 .js。
+# CI 会校验 dist 与 src 同步（build 后 git diff 检查）。
 
 # 日志与临时文件
 *.log

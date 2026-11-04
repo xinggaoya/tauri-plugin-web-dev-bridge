@@ -109,10 +109,13 @@ npm i "git+https://github.com/xinggaoya/tauri-plugin-web-dev-bridge.git#v0.1.0"
 
 </details>
 
-> **关于产物形态**：npm 包直接提供 **TypeScript 源码**（`main` 指向 `src/index.ts`），
-> 由消费方的打包器（vite / esbuild）编译。这样做的好处是**零构建**——
-> git 依赖不需要执行 `prepare` 脚本，也就不需要任何 `allowBuilds` 白名单。
-> 只需要编译产物（`dist/`）时，可自行执行 `pnpm run build`。
+> **关于产物形态**：npm 包携带**编译产物**（`dist/`，随仓库提交），因此：
+> - git 依赖**不会**触发 `prepare` 脚本，消费方无需配置任何 `allowBuilds` 白名单；
+> - `vite.config.ts` 由 Node 直接加载，而 Node 无法剥离 `node_modules` 下 TypeScript 的类型，
+>   所以包内必须自带可执行的 `.js`。
+>
+> 源码在 `src/`，类型声明在 `dist/*.d.ts`；改动源码后请执行 `pnpm run build` 并提交产物
+> （CI 会校验 `dist/` 与 `src/` 同步）。
 
 ## 用法
 
