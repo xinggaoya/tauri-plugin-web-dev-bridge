@@ -11,6 +11,8 @@ permissions:
 jobs:
   publish-crate:
     name: 发布到 crates.io
+    # 未配置 CARGO_REGISTRY_TOKEN 时跳过（首次建仓阶段 secrets 尚未就绪）。
+    if: ${{ secrets.CARGO_REGISTRY_TOKEN != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,6 +42,8 @@ jobs:
 
   publish-npm:
     name: 发布到 npm
+    # 未配置 NPM_TOKEN 时跳过。
+    if: ${{ secrets.NPM_TOKEN != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -50,7 +54,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org
 
       - name: 安装依赖
